@@ -50,6 +50,7 @@ def train_and_fit(args):
         targets = targets.cuda()
         
     logger.info("Starting training process...")
+    print("Starting training process...")
     net.train()
     for e in range(start_epoch, args.num_epochs):
         if args.batched == 0:
@@ -155,6 +156,7 @@ def train_and_fit(args):
         
     
     logger.info("Finished training!")
+    print("Finished training!")
     evaluation_trained = np.array(evaluation_trained); evaluation_untrained = np.array(evaluation_untrained)
     save_as_pickle("test_losses_per_epoch_%d_final.pkl" % args.model_no, losses_per_epoch)
     save_as_pickle("train_accuracy_per_epoch_%d_final.pkl" % args.model_no, evaluation_trained)
