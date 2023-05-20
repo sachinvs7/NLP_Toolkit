@@ -34,6 +34,7 @@ def load_datasets(args, train_test_split=0):
     graph_path = "./data/text_graph.pkl"
     if not os.path.isfile(df_data_path) or not os.path.isfile(graph_path):
         logger.info("Building datasets and graph from raw data... Note this will take quite a while...")
+        print("Building datasets and graph from raw data... Note this will take quite a while...")
         generate_text_graph(args.train_data, args.infer_data, args.max_vocab_len)
     df_data = load_pickle("df_data.pkl")
     G_dict = load_pickle("text_graph.pkl")
@@ -44,6 +45,7 @@ def load_datasets(args, train_test_split=0):
     del G_dict
     
     logger.info("Building adjacency and degree matrices...")
+    print("Building adjacency and degree matrices...")
     A = nx.to_numpy_matrix(G, weight="weight"); A = A + np.eye(G.number_of_nodes())
     degrees = []
     for d in G.degree(weight=None):
@@ -137,6 +139,7 @@ def evaluate(output, labels_e):
 
 def infer(args, f, test_idxs, net, A_hat):
     logger.info("Evaluating on inference data...")
+    print("Evaluating on inference data...")
     net.eval()
     with torch.no_grad():
         if args.batched == 0:
