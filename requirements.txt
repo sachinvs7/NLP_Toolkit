@@ -20,7 +20,6 @@ sacrebleu==1.4.1
 sacremoses==0.0.34
 scikit-learn==0.21.2
 soundfile==0.10.2
-sentencepiece==0.1.83
 seqeval==0.0.12
 six==1.12.0
 spacy==2.1.8
