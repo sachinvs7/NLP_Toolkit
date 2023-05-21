@@ -22,14 +22,14 @@ logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(message)s', \
 logger = logging.getLogger(__file__)
 
 def load_pickle(filename):
-    completeName = os.path.join("./data/",\
+    completeName = os.path.join("/kaggle/working/",\
                                 filename)
     with open(completeName, 'rb') as pkl_file:
         data = pickle.load(pkl_file)
     return data
 
 def save_as_pickle(filename, data):
-    completeName = os.path.join("./data/",\
+    completeName = os.path.join("/kaggle/working/",\
                                 filename)
     with open(completeName, 'wb') as output:
         pickle.dump(data, output)
