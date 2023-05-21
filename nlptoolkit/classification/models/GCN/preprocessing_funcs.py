@@ -90,7 +90,7 @@ def generate_text_graph(train_data, infer_data, max_vocab_len, window=10):
     vectorizer.fit(df["text"])
     df_tfidf = vectorizer.transform(df["text"])
     df_tfidf = df_tfidf.toarray()
-    vocab = vectorizer.get_feature_names()
+    vocab = vectorizer.get_feature_names_out() 
     vocab = np.array(vocab)
     df_tfidf = pd.DataFrame(df_tfidf, columns=vocab)
     del vectorizer
@@ -151,4 +151,4 @@ def generate_text_graph(train_data, infer_data, max_vocab_len, window=10):
     save_as_pickle("word_word_edges.pkl", word_word)
     G.add_edges_from(word_word)
     save_as_pickle("text_graph.pkl", {"graph": G, "infer_idx_start": infer_idx_start})
-    logger.info("Done and saved!")
+    print("Done and saved!")
